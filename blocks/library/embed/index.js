@@ -54,7 +54,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 			type: {
 				type: 'string',
 			},
-			provider_name: {
+			providerName: {
 				type: 'string',
 			},
 		},
@@ -77,7 +77,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 					type: '',
 					error: false,
 					fetching: false,
-					provider_name: '',
+					providerName: '',
 				};
 			}
 
@@ -123,14 +123,14 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 							return;
 						}
 						response.json().then( ( obj ) => {
-							const { html, type, provider_name } = obj;
+							const { html, type, provider_name: providerName } = obj;
 
 							if ( html ) {
-								this.setState( { html, type, provider_name } );
-								setAttributes( { type, provider_name } );
+								this.setState( { html, type, providerName } );
+								setAttributes( { type, providerName } );
 							} else if ( 'photo' === type ) {
-								this.setState( { html: this.getPhotoHtml( obj ), type, provider_name } );
-								setAttributes( { type, provider_name } );
+								this.setState( { html: this.getPhotoHtml( obj ), type, providerName } );
+								setAttributes( { type, providerName } );
 							} else {
 								this.setState( { error: true } );
 							}
@@ -237,7 +237,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 		},
 
 		save( { attributes } ) {
-			const { url, caption, align, type, provider_name } = attributes;
+			const { url, caption, align, type, providerName } = attributes;
 
 			if ( ! url ) {
 				return;
@@ -247,7 +247,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 				'wp-block-embed',
 				align ? `align${ align }` : null,
 				type ? `type-${ type }` : null,
-				provider_name ? `provider-${ provider_name }` : null,
+				providerName ? `provider-${ providerName }` : null,
 			);
 
 			return (
