@@ -54,7 +54,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 			type: {
 				type: 'string',
 			},
-			providerName: {
+			providerNameSlug: {
 				type: 'string',
 			},
 		},
