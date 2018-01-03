@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { parse } from 'url';
-import { includes } from 'lodash';
+import { includes, kebabCase, toLower } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -124,13 +124,14 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 						}
 						response.json().then( ( obj ) => {
 							const { html, type, provider_name: providerName } = obj;
-
+							const providerNameSlug = kebabCase( toLower( providerName ) );
+							console.log(providerNameSlug, providerName);
 							if ( html ) {
-								this.setState( { html, type, providerName } );
-								setAttributes( { type, providerName } );
+								this.setState( { html, type, providerNameSlug } );
+								setAttributes( { type, providerNameSlug } );
 							} else if ( 'photo' === type ) {
-								this.setState( { html: this.getPhotoHtml( obj ), type, providerName } );
-								setAttributes( { type, providerName } );
+								this.setState( { html: this.getPhotoHtml( obj ), type, providerNameSlug } );
+								setAttributes( { type, providerNameSlug } );
 							} else {
 								this.setState( { error: true } );
 							}
@@ -228,7 +229,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 		},
 
 		save( { attributes } ) {
-			const { url, caption, align, type, providerName } = attributes;
+			const { url, caption, align, type, providerNameSlug } = attributes;
 
 			if ( ! url ) {
 				return;
@@ -238,7 +239,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 				'wp-block-embed',
 				align ? `align${ align }` : null,
 				type ? `type-${ type }` : null,
-				providerName ? `provider-${ providerName }` : null,
+				providerNameSlug ? `provider-${ providerNameSlug }` : null,
 			);
 
 			return (
