@@ -125,7 +125,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 						response.json().then( ( obj ) => {
 							const { html, type, provider_name: providerName } = obj;
 							const providerNameSlug = kebabCase( toLower( providerName ) );
-							console.log(providerNameSlug, providerName);
+
 							if ( html ) {
 								this.setState( { html, type, providerNameSlug } );
 								setAttributes( { type, providerNameSlug } );
@@ -235,12 +235,11 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 				return;
 			}
 
-			const embedClassName = classnames(
-				'wp-block-embed',
-				align ? `align${ align }` : null,
-				type ? `type-${ type }` : null,
-				providerNameSlug ? `provider-${ providerNameSlug }` : null,
-			);
+			const embedClassName = classnames( 'wp-block-embed', {
+				[ `align${ align }` ]: align,
+				[ `type-${ type }` ]: type,
+				[ `provider-${ providerNameSlug }` ]: providerNameSlug,
+			} );
 
 			return (
 				<figure className={ embedClassName }>
