@@ -2,7 +2,7 @@
     {
         "uid": "_uid_0",
         "name": "core-embed/vimeo",
-        "isValid": true,
+        "isValid": false,
         "attributes": {
             "url": "https://vimeo.com/",
             "caption": [
