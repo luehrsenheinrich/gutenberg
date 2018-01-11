@@ -2,13 +2,13 @@
     {
         "uid": "_uid_0",
         "name": "core-embed/issuu",
-        "isValid": false,
+        "isValid": true,
         "attributes": {
             "url": "https://issuu.com/",
             "caption": [
                 "Embedded content from issuu"
             ]
         },
-        "originalContent": "<figure class=\"wp-block-embed-issuu\">\n    https://issuu.com/\n    <figcaption>Embedded content from issuu</figcaption>\n</figure>"
+        "originalContent": "<figure class=\"wp-block-embed-issuu wp-block-embed\">\n    https://issuu.com/\n    <figcaption>Embedded content from issuu</figcaption>\n</figure>"
     }
 ]

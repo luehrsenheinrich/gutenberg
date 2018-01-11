@@ -2,13 +2,13 @@
     {
         "uid": "_uid_0",
         "name": "core-embed/imgur",
-        "isValid": false,
+        "isValid": true,
         "attributes": {
             "url": "https://imgur.com/",
             "caption": [
                 "Embedded content from imgur"
             ]
         },
-        "originalContent": "<figure class=\"wp-block-embed-imgur\">\n    https://imgur.com/\n    <figcaption>Embedded content from imgur</figcaption>\n</figure>"
+        "originalContent": "<figure class=\"wp-block-embed-imgur wp-block-embed\">\n    https://imgur.com/\n    <figcaption>Embedded content from imgur</figcaption>\n</figure>"
     }
 ]
