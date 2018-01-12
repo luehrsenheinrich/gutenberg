@@ -240,8 +240,7 @@ function getEmbedBlockSettings( { title, icon, category = 'embed', transforms, k
 				return;
 			}
 
-			const embedClassName = classnames( {
-				[ `wp-block-embed` ]: true,
+			const embedClassName = classnames( 'wp-block-embed', {
 				[ `is-align${ align }` ]: align,
 				[ `is-type-${ type }` ]: type,
 				[ `is-provider-${ providerNameSlug }` ]: providerNameSlug,
